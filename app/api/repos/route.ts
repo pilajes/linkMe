@@ -11,7 +11,7 @@ export async function GET(req: Request) {
 
     const response = await fetch(`https://api.github.com/user/repos`, {
         headers: {
-            Authorization: `Bearer GITHUB_ACCESS_TOKEN`,
+            Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}`,
         },
     });
     const repos = await response.json();

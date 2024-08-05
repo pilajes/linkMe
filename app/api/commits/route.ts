@@ -14,7 +14,7 @@ export async function GET(req: Request) {
     // Fetch the list of commits
     const response = await fetch(`https://api.github.com/repos/${repo}/commits`, {
         headers: {
-            Authorization: `Bearer process.env.GITHUB_ACCESS_TOKEN`, // Ensure you replace YOUR_GITHUB_TOKEN with a valid token
+            Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}`, // Ensure you replace YOUR_GITHUB_TOKEN with a valid token
             Accept: 'application/vnd.github.v3+json'
         },
     });
@@ -29,7 +29,7 @@ export async function GET(req: Request) {
     const detailedCommits = await Promise.all(commits.map(async (commit: any) => {
         const commitResponse = await fetch(commit.url, {
             headers: {
-                Authorization: `Bearer GITHUB_ACCESS_TOKEN`, // Ensure you replace YOUR_GITHUB_TOKEN with a valid token
+                Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}`, // Ensure you replace YOUR_GITHUB_TOKEN with a valid token
                 Accept: 'application/vnd.github.v3.diff' // This tells GitHub to return the diff/patch information
             },
         });
