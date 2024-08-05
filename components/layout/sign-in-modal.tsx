@@ -7,7 +7,7 @@ import {
   useCallback,
   useMemo,
 } from "react";
-import { LoadingDots, Google } from "@/components/shared/icons";
+import { LoadingDots, Github } from "@/components/shared/icons";
 import Image from "next/image";
 
 const SignInModal = ({
@@ -25,7 +25,7 @@ const SignInModal = ({
         <div className="flex flex-col items-center justify-center space-y-3 border-b border-gray-200 bg-white px-4 py-6 pt-8 text-center md:px-16">
           <a href="https://precedent.dev">
             <Image
-              src="/logo.png"
+              src="/propost.png"
               alt="Logo"
               className="h-10 w-10 rounded-full"
               width={20}
@@ -49,15 +49,15 @@ const SignInModal = ({
             } flex h-10 w-full items-center justify-center space-x-3 rounded-md border text-sm shadow-sm transition-all duration-75 focus:outline-none`}
             onClick={() => {
               setSignInClicked(true);
-              signIn("google");
+              signIn("github");
             }}
           >
             {signInClicked ? (
               <LoadingDots color="#808080" />
             ) : (
               <>
-                <Google className="h-5 w-5" />
-                <p>Sign In with Google</p>
+                <Github className="h-5 w-5" />
+                <p>Sign In with Github</p>
               </>
             )}
           </button>

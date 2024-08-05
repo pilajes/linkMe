@@ -12,6 +12,11 @@ export default function UserDropdown({ session }: { session: Session }) {
   const [openPopover, setOpenPopover] = useState(false);
 
   if (!email) return null;
+  
+   // Handle URL decoding
+  const avatarUrl = image
+   ? decodeURIComponent(image)
+   : `https://avatars.githubusercontent.com/u/61300?v=4&size=64`;
 
   return (
     <div className="relative inline-block text-left">
@@ -52,9 +57,9 @@ export default function UserDropdown({ session }: { session: Session }) {
           onClick={() => setOpenPopover(!openPopover)}
           className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full border border-gray-300 transition-all duration-75 focus:outline-none active:scale-95 sm:h-9 sm:w-9"
         >
-          <Image
+          <img
             alt={email}
-            src={image || `https://avatars.dicebear.com/api/micah/${email}.svg`}
+            src={avatarUrl}
             width={40}
             height={40}
           />
